@@ -5,46 +5,46 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 app.get('/', (req, res) => {
     res.send('home');
 })
 
 app.get('/api/1', (req, res) => {
 
-        let firstDate = req.body.dates.first;
-        let secondDate = req.body.dates.second;
-        let convert = req.body.dates.convert
-    
-        let dateOne = new Date(firstDate);
-        let dateTwo = new Date(secondDate);
+    let firstDate = req.body.dates.first;
+    let secondDate = req.body.dates.second;
+    let convert = req.body.dates.convert
 
-        let diff = (dateOne - dateTwo);
+    let dateOne = new Date(firstDate);
+    let dateTwo = new Date(secondDate);
 
-        switch (convert) 
-        {
-            case "seconds":
-                diff = diff / 1000;
-                break;
-            case "minutes":
-                diff = diff / 1000 / 60;
-                break;
-            case "hours":
-                diff = diff / 1000 / 60 / 60;
-                break;
-            case "years":
-                diff = diff / 1000 / 60 / 60 / 24 / 365;
-                diff = Math.round(diff * 100) / 100
-                break;
-            default:
-            diff = diff / 1000 / 60 / 60 / 24
-        }
+    let diff = (dateOne - dateTwo);
 
-       //res.send(`${diff}` + " Days Between " + `${dateOne}` + " and " + `${dateTwo}`);
-       res.send(`${diff}`);
+    switch (convert) 
+    {
+        case "seconds":
+            diff = diff / 1000;
+            break;
 
-    //console.log(firstDate);
-    //console.log(date);
+        case "minutes":
+            diff = diff / 1000 / 60;
+            break;
+
+        case "hours":
+            diff = diff / 1000 / 60 / 60;
+            break;
+
+        case "years":
+            diff = diff / 1000 / 60 / 60 / 24 / 365;
+            diff = Math.round(diff * 100) / 100
+            break;
+
+        default:
+        diff = diff / 1000 / 60 / 60 / 24
+    }
+
+    //res.send(`${diff}` + " Days Between " + `${dateOne}` + " and " + `${dateTwo}`);
+    res.send(`${diff}`);
 });
 
 app.get('/api/2', (req, res) => {
@@ -55,71 +55,77 @@ app.get('/api/2', (req, res) => {
     let secondDate = req.body.dates.second;
     let dateTwo = new Date(secondDate);
 
-    function getNumWorkDays(dateTwo, dateOne) {
+    function getNumWorkDays(dateTwo, dateOne) 
+    {
         let numWorkDays = 0;
         let currentDate = new Date(dateTwo);
-        while (currentDate <= dateOne) {
-            if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) {
+
+        while (currentDate <= dateOne) 
+        {
+            if (currentDate.getDay() !== 0 && currentDate.getDay() !== 6) 
+            {
                 numWorkDays++;
             }
             currentDate = currentDate.addDays(1);
         }
+
         return numWorkDays;
-        
     }
 
-    Date.prototype.addDays = function (days) {
+    Date.prototype.addDays = function (days) 
+    {
         let date = new Date(this.valueOf());
+
         date.setDate(date.getDate() + days);
+
         return date;
     };
 
-   let diff = getNumWorkDays(dateTwo, dateOne);
+    let diff = getNumWorkDays(dateTwo, dateOne);
 
-    res.send(`${diff}`);
+    res.send(`${diff}`); 
 
-//console.log(firstDate);
-//console.log(date);
 });
-
 
 app.get('/api/3', (req, res) => {
 
-let firstDate = req.body.dates.first;
-let dateOne = new Date(firstDate);
+    let firstDate = req.body.dates.first;
+    let secondDate = req.body.dates.second;
 
-let secondDate = req.body.dates.second;
-let dateTwo = new Date(secondDate);
+    let dateOne = new Date(firstDate);
+    let dateTwo = new Date(secondDate);
 
-function getNumWorkDays(dateTwo, dateOne) {
-    let numWorkDays = 0;
-    let currentDate = new Date(dateTwo);
-
-    const startDay = currentDate.getDay() - 1;
-
-    while (currentDate <= dateOne) 
+    function getNumWorkDays(dateTwo, dateOne) 
     {
-        if (currentDate.getDay() === startDay) {
-            numWorkDays++;
+        let numWorkDays = 0;
+        let currentDate = new Date(dateTwo);
+        const startDay = currentDate.getDay() - 1;
+
+        while (currentDate <= dateOne) 
+        {
+            if (currentDate.getDay() === startDay) 
+            {
+                numWorkDays++;
+            }
+
+            currentDate = currentDate.addDays(1);
         }
-        currentDate = currentDate.addDays(1);
+
+        return numWorkDays;
     }
 
-    return numWorkDays;
-}
+    Date.prototype.addDays = function (days) 
+    {
+        let date = new Date(this.valueOf());
 
-Date.prototype.addDays = function (days) {
-    let date = new Date(this.valueOf());
-    date.setDate(date.getDate() + days);
-    return date;
-};
+        date.setDate(date.getDate() + days);
 
-let diff = getNumWorkDays(dateTwo, dateOne);
+        return date;
+    };
 
-res.send(`${diff}`);
+    let diff = getNumWorkDays(dateTwo, dateOne);
 
-//console.log(firstDate);
-//console.log(date);
+    res.send(`${diff}`);
 });
 
 app.listen(3000, () => {
