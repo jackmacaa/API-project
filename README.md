@@ -1,1 +1,4 @@
 # API-project
+
+NODEJS, EXPRESS
+INSOMNIA, VSCODE
