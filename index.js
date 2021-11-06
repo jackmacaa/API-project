@@ -15,10 +15,17 @@ app.get('/api/1', (req, res) => {
 
     let firstDate = req.body.dates.first;
     let secondDate = req.body.dates.second;
-    let convert = req.body.dates.convert
+    let convert = req.body.dates.convert;
+    let timeZoneFirst = req.body.dates.timeZoneFirst;
+    let timeZoneSecond = req.body.dates.timeZoneSecond;
+
+    firstDate += timeZoneFirst;
+    secondDate += timeZoneSecond;
 
     let dateOne = new Date(firstDate);
     let dateTwo = new Date(secondDate);
+
+    //console.log(dateOne);
 
     let diff = (dateOne - dateTwo);
 
