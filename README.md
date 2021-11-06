@@ -4,7 +4,7 @@ Create an API that can take in two date parameters and return various calculatio
 
 ---
 
-##Log
+## Log
 
 03/11/2021 - Setup GIT repo, installed express, setup basic routes.
 
@@ -15,5 +15,5 @@ Create an API that can take in two date parameters and return various calculatio
 
 --- 
 
-##USED
-VSCODE, INSOMNIA, JAVASCRIPT, EXPRESS
+
+## VSCODE, INSOMNIA, JAVASCRIPT, EXPRESS
