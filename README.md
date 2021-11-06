@@ -17,3 +17,6 @@ Create an API that can take in two date parameters and return various calculatio
 
 
 ## VSCODE, INSOMNIA, JAVASCRIPT, EXPRESS
+
+
+Jack McLoughlin
