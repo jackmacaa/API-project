@@ -25,7 +25,7 @@ app.get('/api/1', (req, res) => {
 
     //console.log(dateOne);
 
-    let diff = (dateOne - dateTwo);
+    let diff = dateOne - dateTwo;
 
     switch (convert) 
     {
@@ -43,7 +43,7 @@ app.get('/api/1', (req, res) => {
 
         case "years":
             diff = diff / 1000 / 60 / 60 / 24 / 365;
-            diff = Math.round(diff * 100) / 100
+            //diff = Math.round(diff * 100) / 100
             break;
 
         default:
@@ -53,8 +53,9 @@ app.get('/api/1', (req, res) => {
     //res.send(`${diff}` + " Days Between " + `${dateOne}` + " and " + `${dateTwo}`);
 
     diff = Math.abs(diff);
+    diff = Math.round(diff * 100) / 100;
 
-    res.send(`${diff}`);
+    res.send({"diff": `${diff}`});
 });
 
 app.get('/api/2', (req, res) => {
@@ -98,7 +99,7 @@ app.get('/api/2', (req, res) => {
 
     let diff = getNumWorkDays(dateTwo, dateOne);
 
-    res.send(`${diff}`); 
+    res.send({"diff": `${diff}`}); 
 
 });
 
@@ -145,7 +146,7 @@ app.get('/api/3', (req, res) => {
 
     let diff = getNumWorkDays(dateTwo, dateOne);
 
-    res.send(`${diff}`);
+    res.send({"diff": `${diff}`}); 
 });
 
 app.listen(PORT, () => {
