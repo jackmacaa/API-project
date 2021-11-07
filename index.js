@@ -1,7 +1,5 @@
 const express = require('express');
-
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
@@ -53,16 +51,24 @@ app.get('/api/1', (req, res) => {
     }
 
     //res.send(`${diff}` + " Days Between " + `${dateOne}` + " and " + `${dateTwo}`);
+
+    diff = Math.abs(diff);
+
     res.send(`${diff}`);
 });
 
 app.get('/api/2', (req, res) => {
 
     let firstDate = req.body.dates.first;
-    let dateOne = new Date(firstDate);
-
     let secondDate = req.body.dates.second;
+
+    let dateOne = new Date(firstDate);
     let dateTwo = new Date(secondDate);
+
+    if(dateOne < dateTwo)
+    {
+        [dateOne, dateTwo] = [dateTwo, dateOne];
+    }
 
     function getNumWorkDays(dateTwo, dateOne) 
     {
@@ -103,6 +109,11 @@ app.get('/api/3', (req, res) => {
 
     let dateOne = new Date(firstDate);
     let dateTwo = new Date(secondDate);
+
+    if(dateOne < dateTwo)
+    {
+        [dateOne, dateTwo] = [dateTwo, dateOne];
+    }
 
     function getNumWorkDays(dateTwo, dateOne) 
     {
