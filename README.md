@@ -66,6 +66,8 @@ http://localhost:3000/api/3 - For question 3
 
 07/11/2021 - Tested varying date formats, the dates may be added in any order now, wrote readme.
 
+08/11/2021 - Added comments to the code.
+
 
 --- 
 
