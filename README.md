@@ -30,9 +30,9 @@ A GET request to the specific route will need to have a JSON body such as:
 
 "first" and "second" being the date inputs (dates can be in any order).
 
-"convert" How to change the output from days to: "seconds", "minutes", "hours" or "years" (only works for api/1 currently).
+"convert" How to change the output from days to: "seconds", "minutes", "hours" or "years" (currently only works for api/1).
 
-"timeZoneFirst" and "timeZoneSecond" to add on the specific timezone code e.g. "+10:30" is Adelaide, "+01:00" is Italy and "-03:00" is Greenland (only works for api/1 currently).
+"timeZoneFirst" and "timeZoneSecond" to add on the specific timezone code e.g. "+10:30" is Adelaide, "+01:00" is Italy and "-03:00" is Greenland (currently only works for api/1).
 
 ---
 
@@ -64,9 +64,9 @@ http://localhost:3000/api/3 - For question 3
 
 06/11/2021 - Completed basic functionality of Question 5.
 
-07/11/2021 - Tested varying date formats, the dates may be added in any order now, wrote readme.
+07/11/2021 - Tested varying date formats, the dates may now be added in any order, wrote readme.
 
-08/11/2021 - Added comments to the code, Error checking in case the user enters no dates or one missing.
+08/11/2021 - Added comments to the code, error checking in case the user enters no dates or only one date.
 
 
 --- 
