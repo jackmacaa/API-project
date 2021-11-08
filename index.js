@@ -22,7 +22,7 @@ app.get('/api/1', (req, res) => {
     // Error checking for user not inputting dates
     if(req.body.dates.first === "")
     {
-        error += "First "
+        error += "First, "
     }
 
     if(req.body.dates.second === "")
