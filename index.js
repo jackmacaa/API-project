@@ -11,7 +11,6 @@ app.get('/', (req, res) => {
 
 app.get('/api/1', (req, res) => {
 
-    // Variables set and taken from the user input.
     let firstDate = req.body.dates.first;
     let secondDate = req.body.dates.second;;
     let convert = req.body.dates.convert;
@@ -19,7 +18,7 @@ app.get('/api/1', (req, res) => {
     let timeZoneSecond = req.body.dates.timeZoneSecond;
     let error = ""
 
-    // Error checking for user not inputting dates
+    // Error checking for empty date field/s
     if(req.body.dates.first === "")
     {
         error += "First, "
@@ -30,14 +29,14 @@ app.get('/api/1', (req, res) => {
         error += "Second"
     }
 
-    // Added the timezone to the end of the date string, Will only work in (YYYY-MM-DDTHH:MM:SS) format.
+    // Adding timezone to end of date string, will only work in (YYYY-MM-DDTHH:MM:SS) format.
     firstDate += timeZoneFirst;
     secondDate += timeZoneSecond;
 
     let dateOne = new Date(firstDate);
     let dateTwo = new Date(secondDate);
 
-    // Actual calc of two date inputs, date objects are stored as MS from 01/01/1970.
+    // Calculating two date inputs, date objects are stored as MS from 01/01/1970.
     let diff = dateOne - dateTwo;
 
     // Checking if the user requests the output anything different from "Days".
@@ -86,13 +85,13 @@ app.get('/api/2', (req, res) => {
     let dateOne = new Date(firstDate);
     let dateTwo = new Date(secondDate);
 
-    // Checking if the user dates are input in the right order, then swapping them if not.
+    // Checking if user dates are input in right order, swapping if not.
     if(dateOne < dateTwo)
     {
         [dateOne, dateTwo] = [dateTwo, dateOne];
     }
 
-    // function for checking if first day of date equals Saturday or Sunday and only counting if not.
+    // Checking if day is Saturday or Sunday and counting if not until dates are equal.
     function getNumWorkDays(dateTwo, dateOne) 
     {
         let numWorkDays = 0;
@@ -110,7 +109,7 @@ app.get('/api/2', (req, res) => {
         return numWorkDays;
     }
 
-    // Adds one day to the current date
+    // Allowing incrementation of x days 
     Date.prototype.addDays = function (days) 
     {
         let date = new Date(this.valueOf());
@@ -139,8 +138,8 @@ app.get('/api/3', (req, res) => {
         [dateOne, dateTwo] = [dateTwo, dateOne];
     }
 
-    // Sets temp date to one day before the first day of the user input date, then adds one day and checks again. Will only be true once 1 week has passed.
-    function getNumWorkDays(dateTwo, dateOne) 
+    // Checking if day is previous day of current date, and counting if so until dates are equal. 
+        function getNumWorkDays(dateTwo, dateOne) 
     {
         let numWorkDays = 0;
         let currentDate = new Date(dateTwo);
