@@ -13,10 +13,22 @@ app.get('/api/1', (req, res) => {
 
     // Variables set and taken from the user input.
     let firstDate = req.body.dates.first;
-    let secondDate = req.body.dates.second;
+    let secondDate = req.body.dates.second;;
     let convert = req.body.dates.convert;
     let timeZoneFirst = req.body.dates.timeZoneFirst;
     let timeZoneSecond = req.body.dates.timeZoneSecond;
+    let error = ""
+
+    // Error checking for user not inputting dates
+    if(req.body.dates.first === "")
+    {
+        error += "First "
+    }
+
+    if(req.body.dates.second === "")
+    {
+        error += "Second"
+    }
 
     // Added the timezone to the end of the date string, Will only work in (YYYY-MM-DDTHH:MM:SS) format.
     firstDate += timeZoneFirst;
@@ -52,12 +64,18 @@ app.get('/api/1', (req, res) => {
         diff = diff / 1000 / 60 / 60 / 24
     }
 
-    //res.send(`${diff}` + " Days Between " + `${dateOne}` + " and " + `${dateTwo}`);
-
     // Removing the "-" sign if the user put the dates in reverse order.
     diff = Math.abs(diff);
-
-    res.send(`${diff}`);
+    
+    if(error)
+    {
+        res.send(`${error}` + " Date missing");
+    }
+    else 
+    {
+        res.send(`${diff}`);
+    }
+    
 });
 
 app.get('/api/2', (req, res) => {
