@@ -68,6 +68,7 @@ http://localhost:3000/api/3 - For question 3
 
 08/11/2021 - Added comments to the code, error checking in case the user enters no dates or only one date.
 
+09/11/2021 - Refactored route code into seperate files.
 
 --- 
 
