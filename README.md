@@ -70,6 +70,8 @@ http://localhost:3000/api/3 - For question 3
 
 09/11/2021 - Refactored route code into seperate files.
 
+10/11/2021 - Installed Jest and Supertest for testing.
+
 --- 
 
 
