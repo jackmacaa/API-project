@@ -75,7 +75,7 @@ http://localhost:3000/api/3 - For question 3
 --- 
 
 
-## VSCODE, INSOMNIA, JAVASCRIPT, EXPRESS
+## VSCODE, INSOMNIA, JAVASCRIPT, EXPRESS, JEST, SUPERTEST
 
 
 Jack McLoughlin
